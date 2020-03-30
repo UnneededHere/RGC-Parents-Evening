@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pupil Stream</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngFor = "let pupil of pupils" >
+        <ion-card>
+            <ion-card-header>
+              <ion-card-title>{{pupil[0]}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-button expand="block" (click)="removeFirstPupil(pupil)">Seen</ion-button>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+  </ion-content>

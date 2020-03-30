@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+        const beCool = function () {
+            teacherName = document.getElementById("teacherName").value
+            teacherUser = document.getElementById("teacherUser").value
+            teacherPlace = document.getElementById("teacherPlace").value
+
+            pupilName = document.getElementById("pupilName").value
+            pupilUser = document.getElementById("pupilUser").value
+            console.log(pupilName)
+            let bodyData = {
+                "resource": [
+                    {
+                        "teacherName": teacherName,
+                        "pupilName": pupilName,
+                        "teacherUser": teacherUser,
+                        "pupilUser": pupilUser,
+                        "place": teacherPlace
+                    }
+                ],
+                "ids": [
+                    0
+                ],
+                "filter": "string",
+                "params": [
+                    "string"
+                ]
+            }
+            $.post("http://35.204.222.250/api/v2/db/_table/appointments?api_key=ee4d30beaa7c590c551d364b26c7656c3e547717d7eaf3b035917b9d31faa472", bodyData, function () {
+                document.getElementById("didItWork").style = "color: green"
+                document.getElementById("didItWork").innerHTML = "Success!"
+            }, "json")
+                .fail(function () {
+                    document.getElementById("didItWork").style = "color: red"
+                    document.getElementById("didItWork").innerHTML = "Something went wrong."
+                })
+
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <div id="teacherInfo">
+            <h1>A little bit about you</h1>
+            <input placeholder="Your Name" id="teacherName">
+            <input placeholder="Your Username" id="teacherUser">
+            <input placeholder="Where You'll Be (e.g W1-1, Table 7, etc)" id="teacherPlace">
+        </div>
+        <div id="pupilInfo">
+            <h1>A little bit about them</h1>
+            <input placeholder="Their Name" id="pupilName">
+            <input placeholder="Their Username" id="pupilUser">
+        </div>
+        <button type="button" onClick="beCool()">Submit</button>
+        <h2 id="didItWork"></h2>
+    </form>
+</body>
+
+</html>
