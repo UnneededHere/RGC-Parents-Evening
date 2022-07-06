@@ -1,0 +1,7 @@
+{
+  "name": "fixingTheSystem",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

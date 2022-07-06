@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Teacher Stream</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles"
+        refreshingText="Refreshing...">
+      </ion-refresher-content>
+    </ion-refresher>
+  <ion-list *ngFor = "let teacher of teachers" >
+      <ion-card>
+          <img src="../assets/teacherImages/{{teacher[0]}}.png">
+          <ion-card-header>
+            <ion-card-subtitle>{{teacher[1]}}</ion-card-subtitle>
+            <ion-card-subtitle>Roughly {{teacher[2]}} people queueing</ion-card-subtitle>
+            <ion-card-title>{{teacher[3]}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content *ngIf = "singleton.queueState[0] == false">
+            <ion-button expand="full" (click)="checkQueue(teacher[4])">Queue</ion-button>
+          </ion-card-content>
+          <ion-card-content *ngIf = "singleton.queueState[1] == teacher[4]">
+            <ion-button expand="full" (click)="noQueue(teacher[4])">Stop queueing</ion-button>
+          </ion-card-content>
+      </ion-card>
+  </ion-list>
+</ion-content>

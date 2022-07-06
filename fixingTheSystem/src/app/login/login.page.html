@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Log yourself right in</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Username</ion-label>
+    <ion-input placeholder="govem" [(ngModel)]="username"></ion-input>
+  </ion-item>
+  <ion-button expand="block" (click)="loginAttempt()">Login</ion-button>
+  <ion-button expand="block" (click)="saveOurSouls()">Help</ion-button>
+</ion-content>
